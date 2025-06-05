@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devil May Cry Quiz - Pizza Time!</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        <h1><span class="devil">Devil</span> <span class="may">May</span> <span class="cry">Cry</span></h1>
+        <p class="subtitle">The Complete Demon Hunting Experience</p>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="characters.html"><i class="fas fa-users"></i> Characters</a></li>
+          <li><a href="lore.html"><i class="fas fa-book"></i> Game Lore</a></li>
+          <li><a href="quiz.html" class="active"><i class="fas fa-pizza-slice"></i> Pizza Time</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Quiz Hero Section -->
+  <section class="quiz-hero">
+    <div class="hero-content">
+      <h1>Pizza Time Quiz</h1>
+      <p>Test your knowledge of the demon hunting world! Can you reach SSS rank?</p>
+    </div>
+  </section>
+
+  <!-- Quiz Container -->
+  <main>
+    <div id="quiz-container">
+      <div id="progress">Question 1 of 15</div>
+      <div id="score-display">Score: 0</div>
+      <h2 id="question"></h2>
+      <div id="choices"></div>
+      <div id="quiz-controls">
+        <button id="next" disabled>Next Question <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+    <div class="social-links">
+        <a href="https://x.com/DevilMayCry" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/DMCPOCOFFICIAL/"target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/devilmaycry_5/?hl=en"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/devilmaycry"target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">About Us</a>
+        <a href="#">FAQ</a>
+      </div>
+      <p class="copyright">&copy; 2025 Devil May Cry Wiki. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Quiz Data - 15 questions
+    const quizData = {
+      questions: [
+        {
+          question: "What is the name of Dante's signature handgun?",
+          choices: ["Ivory", "Ebony", "Ebony & Ivory", "Sparda's Pistols"],
+          answer: "Ebony & Ivory"
+        },
+        {
+          question: "Which game first introduced Nero as a playable character?",
+          choices: ["Devil May Cry 1", "Devil May Cry 3", "Devil May Cry 4", "Devil May Cry 5"],
+          answer: "Devil May Cry 4"
+        },
+        {
+          question: "What is the name of Dante's demonic father?",
+          choices: ["Mundus", "Vergil", "Sparda", "Argosax"],
+          answer: "Sparda"
+        },
+        {
+          question: "What is the name of the demonic tree that Urizen seeks to cultivate in Devil May Cry 5?",
+          choices: ["Yggdrasil", "Qliphoth", "Tree of Souls", "Demon's Root"],
+          answer: "Qliphoth"
+        },
+        {
+          question: "What is the name of the demon emperor in DMC1?",
+          choices: ["Mundus", "Vergil", "Arkham", "Arius"],
+          answer: "Mundus"
+        },
+        {
+          question: "What is the name of Nero's demonic arm introduced in Devil May Cry 4?",
+          choices: ["Devil Bringer", "Devil Breaker", "Demon's Grasp", "Yamato"],
+          answer: "Devil Bringer"
+        },
+        {
+          question: "What was the original purpose of Trish's creation?",
+          choices: ["To serve as a vessel for Eva's soul", "To lure Dante into a trap", "To be a guardian of the Temen-ni-gru", "To act as a spy for the Order of the Sword"],
+          answer: "To lure Dante into a trap"
+        },
+        {
+          question: "Which character says 'Jackpot!' as their catchphrase?",
+          choices: ["Nero", "Vergil", "Dante", "Lady"],
+          answer: "Dante"
+        },
+        {
+          question: "What is the name of Dante's shop?",
+          choices: ["Devil Hunter", "Demon's Cry", "Devil May Cry", "Son of Sparda"],
+          answer: "Devil May Cry"
+        },
+        {
+          question: "Which game features the Temen-ni-gru tower?",
+          choices: ["DMC1", "DMC3", "DMC4", "DMC5"],
+          answer: "DMC3"
+        },
+        {
+          question: "What is Vergil's signature weapon?",
+          choices: ["Yamato", "Rebellion", "Force Edge", "Red Queen"],
+          answer: "Yamato"
+        },
+        {
+          question: "Which character is NOT playable in DMC5?",
+          choices: ["Dante", "Nero", "V", "Lady"],
+          answer: "Lady"
+        },
+        {
+          question: "What is the name of the demon king that Nero and V must confront in Devil May Cry 5?",
+          choices: ["Urizen", "Mundus", "Sparda", "Vergil"],
+          answer: "Urizen"
+        },
+        {
+          question: "Which game is chronologically first in the timeline? (Hint: When Dante was young)",
+          choices: ["DMC1", "DMC3", "DMC4", "DMC5"],
+          answer: "DMC3"
+        },
+        {
+          question: "What is the name of Nero's sword in DMC4 and DMC5?",
+          choices: ["Red Queen", "Blue Rose", "Yamato", "Rebellion"],
+          answer: "Red Queen"
+        }
+      ]
+    };
+
+    // Quiz Variables
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let shuffledQuestions = [];
+    let nextButton, questionElement, choicesElement, progressElement, scoreElement;
+
+    // Initialize Quiz
+    function initQuiz() {
+      // Shuffle questions
+      shuffledQuestions = [...quizData.questions].sort(() => 0.5 - Math.random());
+
+      currentQuestionIndex = 0;
+      score = 0;
+
+      // Build initial quiz interface
+      document.getElementById('quiz-container').innerHTML = `
+        <div id="progress">Question 1 of ${shuffledQuestions.length}</div>
+        <div id="score-display">Score: 0</div>
+        <h2 id="question"></h2>
+        <div id="choices"></div>
+        <div id="quiz-controls">
+          <button id="next" disabled>Next Question <i class="fas fa-arrow-right"></i></button>
+        </div>
+      `;
+
+      // Initialize DOM references
+      questionElement = document.getElementById('question');
+      choicesElement = document.getElementById('choices');
+      nextButton = document.getElementById('next');
+      progressElement = document.getElementById('progress');
+      scoreElement = document.getElementById('score-display');
+
+      // Add event listeners
+      nextButton.addEventListener('click', nextQuestion);
+
+      // Show first question
+      updateScore();
+      showQuestion();
+    }
+
+    // Show Current Question
+    function showQuestion() {
+      const question = shuffledQuestions[currentQuestionIndex];
+      questionElement.textContent = question.question;
+      choicesElement.innerHTML = '';
+
+      progressElement.textContent = `Question ${currentQuestionIndex + 1} of ${shuffledQuestions.length}`;
+
+      // Shuffle answer choices
+      const shuffledChoices = [...question.choices].sort(() => 0.5 - Math.random());
+
+      // Create choice buttons
+      shuffledChoices.forEach(choice => {
+        const button = document.createElement('button');
+        button.textContent = choice;
+        button.addEventListener('click', () => selectAnswer(choice, question.answer));
+        choicesElement.appendChild(button);
+      });
+
+      nextButton.disabled = true;
+    }
+
+    // Handle Answer Selection
+    function selectAnswer(selectedAnswer, correctAnswer) {
+      const buttons = choicesElement.querySelectorAll('button');
+      let isCorrect = false;
+
+      // Disable all buttons and mark correct/incorrect
+      buttons.forEach(button => {
+        button.disabled = true;
+
+        if (button.textContent === correctAnswer) {
+          button.classList.add('correct');
+          if (selectedAnswer === correctAnswer) {
+            isCorrect = true;
+            score++;
+            updateScore();
+          }
+        } else if (button.textContent === selectedAnswer) {
+          button.classList.add('incorrect');
+        }
+      });
+
+      // Enable next button
+      nextButton.disabled = false;
+    }
+
+    // Update Score Display
+    function updateScore() {
+      scoreElement.textContent = `Score: ${score}`;
+    }
+
+    // Next Question Handler
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < shuffledQuestions.length) {
+        showQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    // Show Results
+    function showResults() {
+      const percentage = Math.round((score / shuffledQuestions.length) * 100);
+      let styleRating = '';
+
+      // DMC Style Rating based on score
+      if (percentage >= 90) styleRating = "SSS - Smokin' Sick Style!";
+      else if (percentage >= 75) styleRating = "SS - Awesome!";
+      else if (percentage >= 60) styleRating = "S - Sweet!";
+      else if (percentage >= 45) styleRating = "A - Acceptable";
+      else if (percentage >= 30) styleRating = "B - Could be better";
+      else if (percentage >= 15) styleRating = "C - Combo Breaker!";
+      else styleRating = "D - Don't Worry, Keep Practicing!";
+
+      document.getElementById('quiz-container').innerHTML = `
+        <div class="quiz-result">
+          <h2>Quiz Complete!</h2>
+          <p>Your final score is:</p>
+          <div class="score">${score} / ${shuffledQuestions.length}</div>
+          <div class="style-rating">${styleRating}</div>
+          <button class="restart-btn" id="tryAgainBtn">
+            <i class="fas fa-redo"></i> Try Again
+          </button>
+        </div>
+      `;
+
+      // Add event listener to the new button
+      document.getElementById('tryAgainBtn').addEventListener('click', initQuiz);
+    }
+
+    // Initialize the quiz when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+
+      initQuiz();
+    });
+  </script>
+</body>
+
+</html>

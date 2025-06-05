@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devil May Cry Wiki | Stylish Action Redefined</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="video-background">
+    <video autoplay muted loop id="dmcVideo">
+      <source src="assets\images\Devil May Cry 5 - Official Reveal Trailer _ E3 2018.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+
+  <!-- Header with Animated Navigation -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><span class="devil">Devil</span> <span class="may">May</span> <span class="cry">Cry</span></h1>
+        <p class="subtitle">Stylish Action Redefined</p>
+      </div>
+
+      <nav class="main-nav">
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="characters.html"><i class="fas fa-users"></i> Characters</a></li>
+          <li><a href="lore.html"><i class="fas fa-book"></i> Game Lore</a></li>
+          <li><a href="quiz.html"><i class="fas fa-pizza-slice"></i> Pizza Time</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-content">
+      <h2 class="typing-text">Welcome to the World of Devil May Cry</h2>
+      <p class="hero-subtext">Where demon hunters battle with style and power</p>
+      <div class="cta-buttons">
+        <a href="lore.html" class="cta-button pulse"><i class="fas fa-fire"></i> Explore Lore</a>
+        <a href="characters.html" class="cta-button secondary"><i class="fas fa-user-ninja"></i> Meet the Hunters</a>
+      </div>
+      <div class="scrolldown">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <section id="featured">
+      <div class="section-header">
+        <h2>Featured Characters</h2>
+        <div class="style-meter">
+          <div class="style-bar" style="width: 85%">
+            <span>SSS</span>
+          </div>
+        </div>
+      </div>
+      <div class="cards" id="featuredCards">
+        <!-- Placeholder for dynamically added cards -->
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>Loading demonic data...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-series">
+      <div class="section-header">
+        <h2>The Devil May Cry Game Series</h2>
+        <div class="style-meter">
+          <div class="style-bar" style="width: 100%">
+            <span>SSS</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" data-year="2001">
+          <div class="timeline-content">
+            <div class="game-image">
+              <img src="assets/images/Dmc1.webp" alt="Devil May Cry 1" loading="lazy">
+            </div>
+            <h3>Devil May Cry</h3>
+            <p>The game that started it all, introducing Dante and his signature style</p>
+            <div class="game-platforms">
+              <span class="platform-tag ps2">PS2</span>
+              <span class="platform-tag hd">HD Collection</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2003">
+          <div class="timeline-content">
+            <div class="game-image">
+              <img src="assets/images/Dmc2.webp" alt="Devil May Cry 2" loading="lazy">
+            </div>
+            <h3>Devil May Cry 2</h3>
+            <p>Introducing Lucia and expanded gameplay mechanics</p>
+            <div class="game-platforms">
+              <span class="platform-tag ps2">PS2</span>
+              <span class="platform-tag hd">HD Collection</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2005">
+          <div class="timeline-content">
+            <div class="game-image">
+              <img src="assets/images/Dmc3.webp" alt="Devil May Cry 3" loading="lazy">
+            </div>
+            <h3>Devil May Cry 3</h3>
+            <p>Dante's origin story and the introduction of Vergil</p>
+            <div class="game-platforms">
+              <span class="platform-tag ps2">PS2</span>
+              <span class="platform-tag hd">HD Collection</span>
+              <span class="platform-tag switch">Switch</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2008">
+          <div class="timeline-content">
+            <div class="game-image">
+              <img src="assets/images/Dmc4.webp" alt="Devil May Cry 4" loading="lazy">
+            </div>
+            <h3>Devil May Cry 4</h3>
+            <p>Introducing Nero and his Devil Bringer arm</p>
+            <div class="game-platforms">
+              <span class="platform-tag ps3">PS3</span>
+              <span class="platform-tag xbox">Xbox 360</span>
+              <span class="platform-tag pc">PC</span>
+              <span class="platform-tag se">Special Edition</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-year="2019">
+          <div class="timeline-content">
+            <div class="game-image">
+              <img src="assets/images/Dmc5.webp" alt="Devil May Cry 5" loading="lazy">
+            </div>
+            <h3>Devil May Cry 5</h3>
+            <p>The latest installment with stunning visuals and three playable characters</p>
+            <div class="game-platforms">
+              <span class="platform-tag ps4">PS4</span>
+              <span class="platform-tag xbox">Xbox One</span>
+              <span class="platform-tag pc">PC</span>
+              <span class="platform-tag se">Special Edition</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://x.com/DevilMayCry" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/DMCPOCOFFICIAL/"target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/devilmaycry_5/?hl=en"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/devilmaycry"target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">FAQ</a>
+      </div>
+      <p class="copyright">&copy; 2025 Devil May Cry Wiki. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+
+      // Typing effect for hero text
+      const heroText = document.querySelector('.typing-text');
+      if (heroText) {
+        const text = heroText.textContent;
+        heroText.textContent = '';
+
+        let i = 0;
+        const typing = setInterval(() => {
+          if (i < text.length) {
+            heroText.textContent += text.charAt(i);
+            i++;
+          } else {
+            clearInterval(typing);
+          }
+        }, 100);
+      }
+
+      // Load featured character cards
+      const featuredContainer = document.getElementById('featuredCards');
+
+      fetch('assets/js/data.json')
+        .then(res => res.json())
+        .then(data => {
+          if (!data.characters || data.characters.length === 0) {
+            featuredContainer.innerHTML = "<p class='error'>No featured characters available.</p>";
+            return;
+          }
+
+          // Generate card elements
+          featuredContainer.innerHTML = data.characters.slice(0, 4).map(char => `
+        <div class="card">
+          <div class="card-image">
+            <img src="${char.image}" alt="${char.name}" loading="lazy">
+          </div>
+          <div class="card-info">
+            <h3>${char.name}</h3>
+            <span class="card-role">${char.role}</span>
+            <p>${char.description.substring(0, 100)}...</p>
+            <a href="character-detail.html?name=${encodeURIComponent(char.name)}" class="view-profile">
+              View Profile <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+        })
+        .catch(error => {
+          console.error("Error fetching data:", error);
+          featuredContainer.innerHTML = `
+        <div class="error">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>Failed to load cards. Try again later.</p>
+        </div>
+      `;
+        });
+
+      // Dynamic Style Ranking Bar (Updates on page load)
+      const styleBar = document.getElementById('styleRankBar');
+
+      if (styleBar) {
+        const ranks = ["D", "C", "B", "A", "S", "SS", "SSS"];
+        const randomRank = ranks[Math.floor(Math.random() * ranks.length)];
+
+        // Adjust width & add color shift dynamically
+        styleBar.style.width = `${(ranks.indexOf(randomRank) + 1) * 12}%`;
+        styleBar.innerHTML = `<span>${randomRank}</span>`;
+      }
+
+      // Animate timeline on scroll
+      const timelineItems = document.querySelectorAll('.timeline-item');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, { threshold: 0.5 });
+
+      timelineItems.forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+
+</html>

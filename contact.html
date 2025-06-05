@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Devil May Cry Wiki</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <h1><span class="devil">Devil</span> <span class="may">May</span> <span class="cry">Cry</span></h1>
+        <p class="subtitle">Stylish Action Redefined</p>
+      </div>
+      <nav class="main-nav">
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="characters.html"><i class="fas fa-users"></i> Characters</a></li>
+          <li><a href="lore.html"><i class="fas fa-book"></i> Game Lore</a></li>
+          <li><a href="quiz.html"><i class="fas fa-pizza-slice"></i> Pizza Time</a></li>
+          <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Page Content -->
+  <main id="contact-page">
+    <div class="contact-header">
+      <h1>Contact Us</h1>
+      <p>Have questions, feedback, or suggestions? We'd love to hear from you! Reach out through the form or our direct
+        contact information below.</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2><i class="fas fa-info-circle"></i> Get In Touch</h2>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <h3>Email Us</h3>
+            <p>Wencytabar.DMC@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            <h3>Visit Us</h3>
+            <p>Devil May Cry Headquarters<br>Redgrave City</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div>
+            <h3>Call Us</h3>
+            <p>+1 (666) 666-6666</p>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://x.com/DevilMayCry" target="_blank" class="social-link" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.facebook.com/DMCPOCOFFICIAL/" target="_blank" class="social-link" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/devilmaycry_5/?hl=en" target="_blank" class="social-link" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.youtube.com/devilmaycry" target="_blank" class="social-link" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Dante Sparda" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" class="form-control" placeholder="dante@devilmaycry.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" class="form-control" required>
+              <option value="" disabled selected>Select a topic</option>
+              <option value="feedback">Feedback</option>
+              <option value="question">Question</option>
+              <option value="suggestion">Suggestion</option>
+              <option value="bug">Bug Report</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-control" placeholder="Your stylish message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://x.com/DevilMayCry" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/DMCPOCOFFICIAL/"target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/devilmaycry_5/?hl=en"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/devilmaycry"target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">FAQ</a>
+      </div>
+      <p class="copyright">&copy; 2025 Devil May Cry Wiki. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+
+      // Contact form submission
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const subject = document.getElementById('subject').value;
+          const message = document.getElementById('message').value;
+
+          // Here you would typically send the data to a server
+          // For demo purposes, we'll just show an alert
+          alert(`Thanks for your message, ${name}! We'll get back to you soon.`);
+
+          // Reset form
+          contactForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

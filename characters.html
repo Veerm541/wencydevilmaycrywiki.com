@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characters — Devil May Cry Wiki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <img src="assets/images/Bg.gif" alt="Devil May Cry Background">
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        <h1>
+          <span class="devil">Devil</span>
+          <span class="may">May</span>
+          <span class="cry">Cry</span>
+        </h1>
+        <p class="subtitle">Stylish Action Redefined</p>
+      </div>
+
+      <nav class="main-nav">
+        <div class="hamburger" id="hamburger">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="characters.html" class="active"><i class="fas fa-users"></i> Characters</a></li>
+          <li><a href="lore.html" ><i class="fas fa-book"></i> Game Lore</a></li>
+          <li><a href="quiz.html"><i class="fas fa-pizza-slice"></i> Pizza Time</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Characters Hero Section -->
+  <section class="characters-hero">
+    <div class="hero-content">
+      <h1>Devil May Cry Characters</h1>
+      <p>Meet the legendary demon hunters, mysterious allies, and powerful foes of the DMC universe</p>
+    </div>
+  </section>
+
+  <!-- Filter Controls -->
+  <section class="character-filters">
+    <div class="filter-container">
+      <div class="filter-group">
+        <label for="search"><i class="fas fa-search"></i> Search Hunters</label>
+        <input type="text" id="search" placeholder="Dante, Vergil, Nero...">
+      </div>
+
+      <div class="filter-group">
+        <label for="filter-role"><i class="fas fa-user-tag"></i> Filter by Role</label>
+        <select id="filter-role">
+          <option value="">All Roles</option> <!-- Default option -->
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="sort-by"><i class="fas fa-sort"></i> Sort By</label>
+        <select id="sort-by">
+          <option value="popularity-desc">Popularity (High to Low)</option>
+          <option value="popularity-asc">Popularity (Low to High)</option>
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Character Grid -->
+  <main class="character-grid" id="characterGrid">
+    <!-- Character cards will be loaded here by JavaScript -->
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <p>Loading demon hunters...</p>
+    </div>
+  </main>
+
+  <!-- No Results Message -->
+  <div class="no-results" id="noResults" style="display: none;">
+    <i class="fas fa-user-slash"></i>
+    <h3>No Hunters Found</h3>
+    <p>Try adjusting your search or filters</p>
+    <button class="reset-filters" id="resetFilters">Reset Filters</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://x.com/DevilMayCry" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/DMCPOCOFFICIAL/"target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/devilmaycry_5/?hl=en"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/devilmaycry"target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">FAQ</a>
+      </div>
+      <p class="copyright">&copy; 2025 Devil May Cry Wiki. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        });
+      });
+
+      // Character filtering and display
+      const searchInput = document.getElementById('search');
+      const roleFilter = document.getElementById('filter-role');
+      const sortSelect = document.getElementById('sort-by');
+      const characterGrid = document.getElementById('characterGrid');
+      const noResults = document.getElementById('noResults');
+      const resetFilters = document.getElementById('resetFilters');
+
+      let characters = [];
+
+      // Fetch character data
+      fetch('assets/js/data.json')
+        .then(response => response.json())
+        .then(data => {
+          characters = data.characters;
+
+          // Extract unique roles and remove duplicates
+          const uniqueRoles = [...new Set(characters.map(c => c.role))];
+
+          // Populate role filter dropdown
+          roleFilter.innerHTML = '<option value="">All Roles</option>';
+          uniqueRoles.forEach(role => {
+            const option = document.createElement('option');
+            option.value = role;
+            option.textContent = role;
+            roleFilter.appendChild(option);
+          });
+
+          // Initial rendering of character cards
+          renderCharacters(characters);
+        })
+        .catch(error => {
+          console.error('Error loading characters:', error);
+          characterGrid.innerHTML = `
+        <div class="error-message">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Error Loading Characters</h3>
+          <p>${error.message}</p>
+        </div>
+      `;
+        });
+
+      // Filter and sort characters
+      function filterCharacters() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedRole = roleFilter.value;
+        const [sortKey, sortDirection] = sortSelect.value.split('-');
+
+        let filtered = characters.filter(character => {
+          const matchesSearch = character.name.toLowerCase().includes(searchTerm) ||
+            character.description.toLowerCase().includes(searchTerm);
+          const matchesRole = !selectedRole || character.role === selectedRole;
+          return matchesSearch && matchesRole;
+        });
+
+        // Sort characters
+        filtered.sort((a, b) => {
+          let comparison = 0;
+
+          if (sortKey === 'popularity') {
+            comparison = a.popularity - b.popularity;
+          } else if (sortKey === 'name') {
+            comparison = a.name.localeCompare(b.name);
+          }
+
+          return sortDirection === 'desc' ? -comparison : comparison;
+        });
+
+        renderCharacters(filtered);
+      }
+
+      // Render character cards
+      function renderCharacters(charactersToRender) {
+        if (charactersToRender.length === 0) {
+          characterGrid.style.display = 'none';
+          noResults.style.display = 'block';
+        } else {
+          characterGrid.style.display = 'grid';
+          noResults.style.display = 'none';
+
+          characterGrid.innerHTML = '';
+
+          charactersToRender.forEach(character => {
+            const card = document.createElement('div');
+            card.className = 'character-card';
+            card.innerHTML = `
+        <div class="character-image">
+          <img src="${character.image}" alt="${character.name}" loading="lazy">
+          <div class="character-popularity">
+            <i class="fas fa-star"></i> ${character.popularity}%
+          </div>
+        </div>
+        <div class="character-info">
+          <h3>${character.name}</h3>
+          <span class="character-role">${character.role}</span>
+          <div class="character-weapons">
+            ${character.weapon ? `<span class="weapon-tag">${character.weapon}</span>` : ''}
+          </div>
+          <p class="character-description">${character.description}</p>
+          <a href="character-detail.html?name=${encodeURIComponent(character.name)}" class="view-profile">
+            View Profile <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      `;
+            characterGrid.appendChild(card);
+          });
+        }
+      }
+
+
+      // Reset all filters
+      function resetAllFilters() {
+        searchInput.value = '';
+        roleFilter.value = '';
+        sortSelect.value = 'popularity-desc';
+        filterCharacters();
+      }
+
+      // Event Listeners for filtering
+      searchInput.addEventListener('input', filterCharacters);
+      roleFilter.addEventListener('change', filterCharacters);
+      sortSelect.addEventListener('change', filterCharacters);
+      resetFilters.addEventListener('click', resetAllFilters);
+    });
+
+  </script>
+</body>
+
+</html>

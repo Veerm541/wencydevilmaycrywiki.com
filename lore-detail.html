@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Game Lore Details — DMC Wiki</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .lore-detail-hero {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            color: white;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .lore-detail-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        .lore-detail-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .lore-detail-hero h1 {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(229, 10, 10, 0.7);
+        }
+
+        .lore-detail-hero .game-year {
+            color: var(--crimson-light);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lore-detail-hero .platforms {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .platform-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gray-light);
+        }
+
+        .lore-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .lore-section {
+            margin-bottom: 3rem;
+            background: rgba(26, 26, 26, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--gray-medium);
+        }
+
+        .lore-section h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--crimson);
+            padding-bottom: 0.5rem;
+        }
+
+        .synopsis-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .plot-points {
+            display: grid;
+            gap: 1.5rem;
+            font-size: 20px;
+        }
+
+        .plot-point {
+            background: rgba(10, 10, 10, 0.5);
+            padding: 1.5rem;
+            border-left: 4px solid var(--crimson);
+            transition: all 0.3s ease;
+        }
+
+        .plot-point:hover {
+            transform: translateX(5px);
+            background: rgba(229, 10, 10, 0.1);
+        }
+
+        .plot-point h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .character-card {
+            background: rgba(10, 10, 10, 0.5);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--gray-medium);
+        }
+
+        .character-card h3 {
+            color: var(--crimson-light);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-size: 33px;
+        }
+
+        .character-card .role {
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: block;
+            text-align: center;
+            font-size: 33px;
+        }
+
+        .trivia-list {
+            list-style-type: none;
+        }
+
+        .trivia-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(10, 10, 10, 0.5);
+            border-left: 4px solid var(--gold);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .trivia-list li::before {
+            content: '!';
+            position: absolute;
+            left: 0.5rem;
+            top: 1rem;
+            color: var(--crimson);
+            font-weight: bold;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--crimson);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--crimson-dark);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .lore-detail-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .lore-detail-hero .game-year {
+                font-size: 1.2rem;
+            }
+
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video Background -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="assets/videos/dmc-bg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <h1><span class="devil">Devil</span> <span class="may">May</span> <span class="cry">Cry</span></h1>
+                <p class="subtitle">The Complete Demon Hunting Experience</p>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="characters.html"><i class="fas fa-users"></i> Characters</a></li>
+                    <li><a href="lore.html" class="active"><i class="fas fa-book"></i> Game Lore</a></li>
+                    <li><a href="quiz.html"><i class="fas fa-pizza-slice"></i> Pizza Time</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Lore Detail Content -->
+    <main>
+        <div id="lore-detail-content">
+            <!-- Loading content -->
+            <div class="loading-spinner"
+                style="height: 50vh; display: flex; justify-content: center; align-items: center;">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+        <a href="https://x.com/DevilMayCry" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/DMCPOCOFFICIAL/"target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/devilmaycry_5/?hl=en"target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/devilmaycry"target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">About Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p class="copyright">&copy; 2025 Devil May Cry Wiki. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Get game ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('game');
+
+            if (!gameId) {
+                window.location.href = 'lore.html';
+                return;
+            }
+
+            // Fetch game data
+            fetch('assets/js/data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const game = data.games.find(g => g.id === gameId);
+
+                    if (!game) {
+                        window.location.href = 'lore.html';
+                        return;
+                    }
+
+                    // Render game content
+                    const contentContainer = document.getElementById('lore-detail-content');
+                    contentContainer.innerHTML = `
+            <!-- Hero Section -->
+            <section class="lore-detail-hero" style="background-image: url('${game.cover_image}')">
+              <div class="lore-detail-hero-content">
+                <a href="lore.html" class="back-button">
+                  <i class="fas fa-arrow-left"></i> Back to Games
+                </a>
+                <h1>${game.title}</h1>
+                <div class="game-year">${game.year}</div>
+                <div class="platforms">
+                  ${game.platforms.map(platform => `
+                    <span class="platform-tag">${platform}</span>
+                  `).join('')}
+                </div>
+              </div>
+            </section>
+
+            <!-- Main Content -->
+            <div class="lore-detail-container">
+              <!-- Synopsis Section -->
+              <section class="lore-section">
+                <h2><i class="fas fa-scroll"></i> Story</h2>
+                <div class="synopsis-content">
+                  ${game.full_lore.synopsis}
+                </div>
+              </section>
+
+              <!-- Plot Points Section -->
+              <section class="lore-section">
+                <h2><i class="fas fa-list-ol"></i> Main Plot Points</h2>
+                <div class="plot-points">
+                  ${game.full_lore.plot.map(point => `
+                    <div class="plot-point">
+                      <h3>${point.chapter}</h3>
+                      <p>${point.content}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+
+              <!-- Characters Section -->
+              <section class="lore-section">
+                <h2><i class="fas fa-users"></i> Key Characters</h2>
+                <div class="characters-grid">
+                  ${game.full_lore.characters.map(character => `
+                    <div class="character-card">
+                      <h3>${character.name}</h3>
+                      <span class="role">${character.role}</span>
+                      <p>${character.description}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+
+              <!-- Trivia Section -->
+              <section class="lore-section">
+                <h2><i class="fas fa-question-circle"></i> Trivia</h2>
+                <ul class="trivia-list">
+                  ${game.full_lore.trivia.map(item => `
+                    <li>${item}</li>
+                  `).join('')}
+                </ul>
+              </section>
+            </div>
+          `;
+                })
+                .catch(error => {
+                    console.error('Error loading game data:', error);
+                    document.getElementById('lore-detail-content').innerHTML = `
+            <div class="error-message" style="text-align: center; padding: 5rem;">
+              <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--crimson); margin-bottom: 1rem;"></i>
+              <h3>Failed to load game data</h3>
+              <p>Please try again later or return to the <a href="lore.html" style="color: var(--gold);">games list</a>.</p>
+            </div>
+          `;
+                });
+        });
+    </script>
+</body>
+
+</html>
